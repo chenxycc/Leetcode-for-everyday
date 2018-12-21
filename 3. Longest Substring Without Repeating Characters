@@ -1,0 +1,18 @@
+class Solution:
+    def lengthOfLongestSubstring(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        start = -1
+        max = 0
+        dict={}
+        for i in range(len(s)):
+            if s[i] in dict and dict[s[i]]>start:
+                start = dict[s[i]]
+                dict[s[i]]=i
+            else:
+                dict[s[i]] = i
+                if i -start>max:
+                    max = i-start
+        return max

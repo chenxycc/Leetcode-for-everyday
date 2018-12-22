@@ -1,0 +1,29 @@
+class Solution(object):
+    def myAtoi(self, str):
+        """
+        :type str: str
+        :rtype: int
+        """
+        str = str.strip()#删去空格
+        str_num = 0
+        if len(str) == 0:
+            return 0
+        flag = True
+        if str[0] == '+' or str[0]=='-':
+            if str[0] == '-':
+                flag = False
+            str = str[1:]
+        for char in str:
+            if char >= '0' and char <= '9':
+                str_num = str_num *10 + ord(char)-ord('0')#ord()返回ASCII 数值
+            else:
+                break
+        if str_num >2**31 -1:
+            if flag == False:
+                return -2**31
+            else:
+                return 2**31-1
+        if not flag:
+            str_num = 0 - str_num
+        return str_num
+        

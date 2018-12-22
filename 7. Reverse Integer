@@ -1,0 +1,25 @@
+class Solution:
+    def reverse(self, x):
+        """
+        :type x: int
+        :rtype: int
+        """
+        flag = False
+        x_char = str(x)
+        
+        if x_char[0] == '-':
+            x_char= x_char[1:]
+            flag = True
+        
+        rev = x_char[::-1]
+            
+        if flag:
+            rev = '-'+rev
+        
+        rev = int(rev)
+        
+        if rev>2**31-1 or rev<-2**31:
+            rev = 0
+        
+        return rev
+    

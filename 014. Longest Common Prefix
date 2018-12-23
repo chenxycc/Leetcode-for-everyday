@@ -23,4 +23,4 @@ class Solution(object):
         :type strs: List[str]
         :rtype: str
         """
-        return os.path.commonprefix(strs)
+        return os.path.commonprefix(strs)#返回list中，所有path共有的最长的路径。

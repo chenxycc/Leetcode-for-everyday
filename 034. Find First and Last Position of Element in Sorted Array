@@ -1,0 +1,20 @@
+class Solution:
+    def searchRange(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        for i in range(len(nums)):
+            if nums[i] == target:
+                idx_l = i
+                break
+        else:
+            return [-1, -1]
+        for j in range(len(nums)-1, -1, -1):
+            if nums[j] == target:
+                idx_r = j
+                break
+
+        return [idx_l, idx_r]
+        

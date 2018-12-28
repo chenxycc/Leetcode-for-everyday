@@ -1,0 +1,29 @@
+class Solution:
+    def isValidSudoku(self, board):
+        """
+        :type board: List[List[str]]
+        :rtype: bool
+        """
+        def isValid(x, y, temp):
+            for i in range(9):
+                if board[i][y] == temp:
+                    return False
+            for j in range(9):
+                if board[x][j] == temp:
+                    return False
+            for i in range(3):
+                for j in range(3):
+                    if board[(x//3)*3+i][(y//3)*3+j] == temp:
+                        return False
+            return True
+        for i in range(9):
+            for j in range(9):
+                if board[i][j] == '.':
+                    continue
+                temp = board[i][j]
+                board[i][j] = 'D'
+                if isValid(i, j, temp) == False:
+                    return False
+                else:
+                    board[i][j] == temp
+        return True

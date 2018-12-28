@@ -1,4 +1,5 @@
-class Solution(object):
+#Solution1:
+class Solution:
     def isValue(self,board,x,y):
         #检查填入的坐标是否与行中已有元素相等
         #列符合
@@ -39,10 +40,43 @@ class Solution(object):
                     return False
         #所有'.'都填满，并且没毛病，返回true
         return True
-        
     def solveSudoku(self, board):
         """
         :type board: List[List[str]]
         :rtype: void Do not return anything, modify board in-place instead.
         """
-        self.dfs(board)
+   
+#Solution2:(较好的答案)
+class Solution:
+    def solveSudoku(self, board):
+        """
+        :type board: List[List[str]]
+        :rtype: void Do not return anything, modify board in-place instead.
+        """
+        def fill(i,j):
+            r = ["1","2","3","4","5","6","7","8","9"]
+            for c in board[i]:
+                if c in r:
+                    r.remove(c)
+            for k in range(9):
+                if board[k][j] in r:
+                    r.remove(board[k][j])
+            for m in range(3):
+                for n in range(3):
+                    if board[i//3*3+m][j//3*3+n] in r:
+                        r.remove(board[i//3*3+m][j//3*3+n])
+            return r
+        def track(n):
+            if n == 81:
+                return True
+            i, j = n//9, n%9
+            if board[i][j] != '.':
+                return track(n+1)
+            r = fill(i, j)
+            for c in r:
+                board[i][j] = c
+                if track(n+1):
+                    return True
+            board[i][j] = '.'
+            return False
+        track(0)

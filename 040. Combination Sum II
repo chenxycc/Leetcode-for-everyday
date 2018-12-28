@@ -1,3 +1,4 @@
+#Solution1:
 class Solution:
     def combinationSum2(self, candidates, target):
         """
@@ -19,3 +20,31 @@ class Solution:
         candidates.sort()
         helper(target, [], 0)
         return res
+        
+        
+#Solution2:(Better)
+class Solution:
+    def combinationSum2(self, candidates, target):
+        """
+        :type candidates: List[int]
+        :type target: int
+        :rtype: List[List[int]]
+        """
+        results = []
+        candidates.sort()
+        
+        def find(target, path, start, candidates, results):
+            for i in range(start, len(candidates)):
+                candidate = candidates[i]
+                
+                if i>0 and i != start and candidate == candidates[i-1]:
+                    continue
+                
+                if candidate == target:
+                    results.append(path +[candidate])
+                elif candidate < target:
+                    find(target - candidate, path + [candidate], i+1, candidates, results)
+                else:
+                    break
+        find(target, [], 0, candidates, results)
+        return results

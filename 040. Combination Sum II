@@ -1,0 +1,21 @@
+class Solution:
+    def combinationSum2(self, candidates, target):
+        """
+        :type candidates: List[int]
+        :type target: int
+        :rtype: List[List[int]]
+        """
+        def helper(remain, combi,idx):
+            if remain<0:
+                return 
+            if remain == 0 and combi not in res:
+                res.append(combi)
+                return 
+            if idx >= len(candidates):
+                return
+            helper(remain, combi, idx+1)
+            helper(remain - candidates[idx], combi+[candidates[idx]], idx+1)
+        res = []
+        candidates.sort()
+        helper(target, [], 0)
+        return res

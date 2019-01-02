@@ -1,0 +1,17 @@
+class Solution:
+    def jump(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        if len(nums)<2:
+            return 0
+        count=1
+        limit = nums[0]
+        max_index = nums[0]
+        for i in range(1,len(nums)):
+            if i > limit:
+                count+=1
+                limit=max_index
+            max_index = max(max_index, nums[i]+i)
+        return count

@@ -1,0 +1,17 @@
+class Solution:
+    def firstMissingPositive(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        new = sorted(nums)
+        if nums:
+            if new[0]>1:
+                return 1
+            else:
+                for i in range(new[0], new[-1]):
+                    if i>0 and i not in nums:
+                        return i
+                return new[-1]+1
+        else:
+            return 1

@@ -1,0 +1,21 @@
+class Solution:
+    def multiply(self, num1, num2):
+        """
+        :type num1: str
+        :type num2: str
+        :rtype: str
+        """
+        num1, num2 = num1[::-1], num2[::-1]
+        num1_list = []
+        num2_list = []
+        for char in num1:
+            num1_list.append(ord(char))
+        for char in num2:
+            num2_list.append(ord(char))
+        num1, num2 = 0, 0
+        for i in range(len(num1_list)):
+            num1 += (num1_list[i]-48)*(10**i)
+        for j in range(len(num2_list)):
+            num2 += (num2_list[j]-48)*(10**j)
+        return str(num1*num2) 
+    

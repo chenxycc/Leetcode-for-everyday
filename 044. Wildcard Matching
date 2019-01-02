@@ -1,0 +1,26 @@
+class Solution:
+    def isMatch(self, s, p):
+        """
+        :type s: str
+        :type p: str
+        :rtype: bool
+        """
+        p_s,p_p,start,match= 0, 0, -1, 0
+        while p_s<len(s):
+            if p_p<len(p) and (p[p_p] == '?' or s[p_s] == p[p_p]):
+                p_p += 1
+                p_s += 1
+            elif p_p<len(p) and p[p_p] == '*':
+                start = p_p
+                match = p_s
+                p_p += 1
+            elif start != -1:
+                p_p = start + 1
+                match += 1
+                p_s = match
+            else:
+                return False
+        while p_p < len(p) and p[p_p] == '*':
+            p_p += 1
+        return p_p == len(p)
+    

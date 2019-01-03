@@ -1,0 +1,26 @@
+#Solution1:
+class Solution:
+    def permuteUnique(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        if len(nums)<=1:
+            return [nums]
+        res = []
+        for i in range(len(nums)):
+            if nums[i] not in nums[:i]:
+                prev = i
+                new_nums = nums[:i]+nums[i+1:]
+                for k in self.permuteUnique(new_nums):
+                    res.append([nums[i]] + k)
+        return res
+        
+#Solution2:
+class Solution:
+    def permuteUnique(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        return list(set(itertools.permutations(nums)))

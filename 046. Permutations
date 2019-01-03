@@ -1,0 +1,17 @@
+class Solution:
+    def permute(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        if len(nums) == 0:
+            return []
+        if len(nums) == 1:
+            return [nums]
+        res = []
+        for i in range(len(nums)):
+            pre = nums[i]
+            rest = nums[:i]+nums[i+1:]
+            for j in self.permute(rest):
+                res.append([pre]+j)
+        return res

@@ -1,0 +1,52 @@
+#Solution1:
+class Solution:
+    def rotate(self, matrix):
+        """
+        :type matrix: List[List[int]]
+        :rtype: void Do not return anything, modify matrix in-place instead.
+        """
+        n = len(matrix)
+        for i in range(n//2):
+            matrix[i], matrix[n-1-i] = matrix[n-1-i], matrix[i]
+        for i in range(n):
+            for j in range(i+1, n):
+                matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+
+#Solution2:
+class Solution:
+    def rotate(self, matrix):
+        """
+        :type matrix: List[List[int]]
+        :rtype: void Do not return anything, modify matrix in-place instead.
+        """
+        n = len(matrix)
+        for i in range(n//2):
+            for j in range(n-n//2):
+                matrix[i][j], matrix[~j][i], matrix[~i][~j], matrix[j][~i] = matrix[~j][i], matrix[~i][~j], matrix[j][~i], matrix[i][j]
+        
+
+#Solution3:
+class Solution:
+    def rotate(self, matrix):
+        """
+        :type matrix: List[List[int]]
+        :rtype: void Do not return anything, modify matrix in-place instead.
+        """
+        def rotateOneLayer(layer):
+            size = len(matrix)
+            for i in range(layer, len(matrix)-1-layer):
+                matrix[layer][i], matrix[i][size-1-layer], matrix[size-1-layer][size-1-i], matrix[size-1-i][layer] = \
+                matrix[size-1-i][layer], matrix[layer][i], matrix[i][size-1-layer], matrix[size-1-layer][size-1-i]
+            
+        for layer in range((len(matrix)+1)//2):
+            rotateOneLayer(layer)
+        
+
+#Solution4:
+class Solution:
+    def rotate(self, matrix):
+        """
+        :type matrix: List[List[int]]
+        :rtype: void Do not return anything, modify matrix in-place instead.
+        """
+        matrix[:] = zip(*matrix[::-1])

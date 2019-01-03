@@ -1,3 +1,4 @@
+#Solution1:
 class Solution:
     def permute(self, nums):
         """
@@ -14,4 +15,24 @@ class Solution:
             rest = nums[:i]+nums[i+1:]
             for j in self.permute(rest):
                 res.append([pre]+j)
+        return res
+#Solution2:
+class Solution:
+    def permute(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        orig = nums
+        res = [nums]
+        l = len(nums)
+        if l<=1:
+            return res
+        if l==2:
+            return [nums, nums[::-1]]
+        res = []
+        if l>2:
+            for i in range(l):
+                nums = [orig[i]] + [j for j in orig if j != orig[i]]
+                res += [[nums[0]] + i for i in self.permute(nums[1:])]
         return res

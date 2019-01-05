@@ -1,0 +1,17 @@
+class Solution:
+    def totalNQueens(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        self.res=0
+        def DFS(queene, xy_dif,xy_sum):
+            p=len(queene)
+            if p==n:
+                self.res += 1
+                return 
+            for q in range(n):
+                if q not in queene and p-q not in xy_dif and p+q not in xy_sum:
+                    DFS(queene+[q],xy_dif+[p-q],xy_sum+[p+q])
+        DFS([],[],[])
+        return self.res

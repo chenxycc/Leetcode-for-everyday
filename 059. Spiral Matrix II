@@ -1,0 +1,35 @@
+class Solution:
+    def generateMatrix(self, n):
+        """
+        :type n: int
+        :rtype: List[List[int]]
+        """
+        curnum = 0
+        matrix = [[0 for i in range(n)] for j in range(n)]
+        maxup = maxleft = 0
+        maxdown = maxright = n-1
+        direction = 0
+        while True:
+            if direction == 0:
+                for i in range(maxleft, maxright+1):
+                    curnum += 1
+                    matrix[maxup][i] = curnum
+                maxup += 1
+            elif direction == 1:
+                for i in range(maxup, maxdown+1):
+                    curnum += 1
+                    matrix[i][maxright] = curnum
+                maxright -= 1
+            elif direction == 2:
+                for i in reversed(range(maxleft, maxright + 1)):
+                    curnum += 1
+                    matrix[maxdown][i] = curnum
+                maxdown -= 1
+            else:
+                for i in reversed(range(maxup, maxdown+1)):
+                    curnum += 1
+                    matrix[i][maxleft] = curnum
+                maxleft += 1
+            if curnum >= n*n:
+                return matrix
+            direction = (direction + 1) % 4

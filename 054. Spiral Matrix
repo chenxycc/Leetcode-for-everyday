@@ -1,0 +1,43 @@
+#Solution1:
+class Solution(object):
+    def spiralOrder(self, matrix):
+        """
+        :type matrix: List[List[int]]
+        :rtype: List[int]
+        """
+        if matrix == []:
+            return []
+        res = []
+        maxup = maxleft = 0
+        maxdown = len(matrix) - 1
+        maxright = len(matrix[0]) - 1
+        direction = 0 #0: go right; 1：go down; 2: go left; 3: go up
+        while True:
+            if direction == 0:
+                for i in range(maxleft, maxright+1):
+                    res.append(matrix[maxup][i])
+                maxup += 1
+            elif direction == 1:
+                for i in range(maxup, maxdown+1):
+                    res.append(matrix[i][maxright])
+                maxright -= 1
+            elif direction == 2:
+                for i in reversed(range(maxleft, maxright+1)):
+                    res.append(matrix[maxdown][i])
+                maxdown -= 1
+            else: 
+                for i in reversed(range(maxup, maxdown+1)):
+                    res.append(matrix[i][maxleft])
+                maxleft +=1
+            if maxup > maxdown or maxleft > maxright:
+                return res
+            direction = (direction + 1 ) % 4 
+            
+#Solution2:
+class Solution(object):
+    def spiralOrder(self, matrix):
+        """
+        :type matrix: List[List[int]]
+        :rtype: List[int]
+        """
+        return matrix and list(matrix.pop(0)) + self.spiralOrder(zip(*matrix)[::-1])

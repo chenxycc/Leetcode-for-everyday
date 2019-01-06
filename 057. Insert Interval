@@ -1,0 +1,55 @@
+#Solution1:
+# Definition for an interval.
+# class Interval:
+#     def __init__(self, s=0, e=0):
+#         self.start = s
+#         self.end = e
+
+class Solution:
+    def insert(self, intervals, newInterval):
+        """
+        :type intervals: List[Interval]
+        :type newInterval: Interval
+        :rtype: List[Interval]
+        """
+        if not intervals or len(intervals) == 0:
+            return [newInterval]
+        res = []
+        for interval in sorted(intervals+[newInterval], key = lambda x: (x.start, x.end)):
+            if res and res[-1].end >= interval.start:
+                res[-1].end = max(res[-1].end, interval.end)
+            else:
+                res.append(interval)
+        return res
+#Solution2:
+# Definition for an interval.
+# class Interval:
+#     def __init__(self, s=0, e=0):
+#         self.start = s
+#         self.end = e
+
+class Solution:
+    def insert(self, intervals, newInterval):
+        """
+        :type intervals: List[Interval]
+        :type newInterval: Interval
+        :rtype: List[Interval]
+        """
+        if not intervals or len(intervals) == 0:
+            return [newInterval]
+        idx = -1
+        for i in range(len(intervals)):
+            if intervals[i].start > newInterval.start:
+                idx = i
+                break
+        if idx != -1:
+            intervals.insert(i, newInterval)
+        else:
+            intervals.append(newInterval)
+        res = []
+        for interval in intervals:
+            if res and res[-1].end >= interval.start:
+                res[-1].end = max(res[-1].end, interval.end)
+            else:
+                res.append(interval)
+        return res

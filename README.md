@@ -1,1 +1,3 @@
-"Leetcode For Everyday"
+'''
+Leetcode For Everyday
+'''

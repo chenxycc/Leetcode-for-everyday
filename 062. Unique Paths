@@ -28,3 +28,17 @@ class Solution:
               for j in range(1, n):
                     dp[j] += dp[j-1]
         return dp[n-1]
+#Solution3:(转换为排列组合问题）
+class Solution:
+    def uniquePaths(self, m, n):
+        """
+        :type m: int
+        :type n: int
+        :rtype: int
+        """
+        def factorial(num):
+            res = 1
+            for i in range(1, num + 1):
+                res *= i
+            return res
+        return factorial(m+n-2)//factorial(n-1)//factorial(m-1)

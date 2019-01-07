@@ -1,2 +1,1 @@
-立贴为证，开始刷题！
-2018.12.21
+"Leetcode For Everyday"

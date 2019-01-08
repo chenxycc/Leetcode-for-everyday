@@ -1,0 +1,21 @@
+#Solution1:
+from itertools import combinations
+class Solution:
+    def combine(self, n, k):
+        """
+        :type n: int
+        :type k: int
+        :rtype: List[List[int]]
+        """
+        return list(combinations(range(1, n+1), k))
+#Solution2:
+class Solution:
+    def combine(self, n, k):
+        """
+        :type n: int
+        :type k: int
+        :rtype: List[List[int]]
+        """
+        if k == 0:
+            return [[]]
+        return [pre + [i] for i in range(k, n+1) for pre in self.combine(i-1, k-1)]

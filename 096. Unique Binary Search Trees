@@ -1,0 +1,29 @@
+#动态规划迭代求解
+class Solution:
+    def numTrees(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        dp = [1, 1, 2]
+        if n < 3:
+            return dp[n]
+        dp += [0 for i in range(n-2)]
+        for i in range(3, n+1):
+            for j in range(i):
+                dp[i] += dp[j]*dp[i-j-1]
+        return dp[n]
+#递归求解           
+class Solution:
+    def numTrees(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        dp = [1, 1, 2]
+        if n < 3: return dp[n]
+        ans = 0 
+        for i in range(n): 
+            ans += self.numTrees(i)*self.numTrees(n-i-1) 
+        return ans
+#Time Limit Exceeded...额

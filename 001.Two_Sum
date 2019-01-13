@@ -1,3 +1,4 @@
+```
 #1. Two Sum
 class Solution:
     def twoSum(self, nums, target):
@@ -13,3 +14,5 @@ class Solution:
             else:
                 lookup[num] = i
         
+
+```

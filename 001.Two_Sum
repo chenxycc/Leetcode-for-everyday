@@ -1,5 +1,5 @@
-```
-# 1. Two Sum
+## 第一题
+#1. Two Sum
 class Solution:
     def twoSum(self, nums, target):
         """
@@ -15,4 +15,3 @@ class Solution:
                 lookup[num] = i
         
 
-```

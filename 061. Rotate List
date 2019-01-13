@@ -88,3 +88,39 @@ class Solution:
         head = temp
     
         return head
+#Solution3:(Best)
+class Solution:
+    def rotateRight(self, head, k):
+        """
+        :type head: ListNode
+        :type k: int
+        :rtype: ListNode
+        """
+        slow = fast = dummy = ListNode(-1)
+        dummy.next = head
+        count = 0 
+        if not head:
+            return None
+        if head.next == None:
+            return head
+        pointer = head
+        length = 1
+    
+        while pointer.next:
+            pointer = pointer.next
+            length += 1
+    
+        rotateTimes = k%length
+        if rotateTimes == 0:
+            return head
+        while fast.next:
+            if count<rotateTimes:
+                count+=1
+                fast = fast.next
+            else:
+                fast = fast.next
+                slow = slow.next
+        dummy.next = slow.next
+        fast.next = head
+        slow.next = None
+        return dummy.next 

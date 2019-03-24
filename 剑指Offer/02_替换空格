@@ -1,0 +1,11 @@
+class Solution:
+    # s 源字符串
+    def replaceSpace(self, s):
+        # write code here
+        new_str = ""
+        for i in s:
+            if i != " ":
+                new_str += i
+            else:
+                new_str +="%20"
+        return new_str

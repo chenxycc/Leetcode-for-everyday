@@ -1,3 +1,7 @@
+#### 法1
+
+>时间复杂度O(N)
+空间复杂度O(N)
 ```
 class Solution:
     def moveZeroes(self, nums: List[int]) -> None:
@@ -14,9 +18,11 @@ class Solution:
             nums[i] = 0
 ```
 
-> 方法2
-不需要额外的内存
+#### 法2
 
+不需要额外的内存
+> 时间复杂度O(N)
+空间复杂度O(1)
 ```
 class Solution:
     def moveZeroes(self, nums: List[int]) -> None:

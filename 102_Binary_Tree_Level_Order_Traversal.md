@@ -1,3 +1,4 @@
+```
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, x):
@@ -14,4 +15,4 @@ class Solution:
             LRpair = [(node.left, node.right) for node in level]
             level = [leaf for LR in LRpair for leaf in LR if leaf]
         return ans
-        
+```        

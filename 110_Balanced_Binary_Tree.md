@@ -1,3 +1,6 @@
+### 递归
+- 判断左右子树最大高度差不超过1且左右子树均为平衡树
+
 ```
 class Solution:
     def isBalanced(self, root: TreeNode) -> bool:

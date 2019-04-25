@@ -55,5 +55,5 @@ class Solution:
 ```
 
 > -  √ 87/87 cases passed (232 ms)
-  -  √ Your runtime beats 75.77 % of python3 submissions
-  -  √ Your memory usage beats 23.42 % of python3 submissions (14.1 MB) 
+> -  √ Your runtime beats 75.77 % of python3 submissions
+> -  √ Your memory usage beats 23.42 % of python3 submissions (14.1 MB) 

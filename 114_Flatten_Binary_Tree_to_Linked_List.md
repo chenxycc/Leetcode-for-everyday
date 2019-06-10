@@ -22,3 +22,6 @@ class Solution:
         root.left = None
         self.pre = root
 ```
+
+- Runtime: 44 ms, faster than 79.68% of Python3 online submissions for Flatten Binary Tree to Linked List.
+Memory Usage: 13.2 MB, less than 84.87% of Python3 online submissions for Flatten Binary Tree to Linked List.

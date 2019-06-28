@@ -13,7 +13,7 @@ class Solution:
 
 - ~_~超时了
 
-### 记忆话搜索
+### 记忆化搜索
 ```
 class Solution:    
     def integerBreak(self, n: int) -> int:

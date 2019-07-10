@@ -117,8 +117,7 @@ if __name__=="__main__":
     while cur is not None:
         print(cur.data)
         cur = cur.next
-## 可以先问面试官两个链表是否等长，若是等长：可以写以下代码
-```
+#可以先问面试官两个链表是否等长，若是等长：可以写以下代码
 def add(head1, head2):
     if not head1:
         return head2
@@ -132,4 +131,3 @@ def add(head1, head2):
         head3 = LNode(head1.data + head2.data - 10)
         head3.next = add(head1.next, add(head2.next, tmp))
     return head3
-```

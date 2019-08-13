@@ -1,4 +1,4 @@
-//此方法不好理解，但若是手算一遍则十分清晰明了
+## 此方法不好理解，但若是手算一遍则十分清晰明了
 class Solution:
     def convert(self, s, numRows):
         """

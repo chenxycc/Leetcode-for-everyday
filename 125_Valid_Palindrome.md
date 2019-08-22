@@ -15,3 +15,13 @@ class Solution:
         return True
 
 ```
+
+#### 直接判断
+
+```
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        s_s = "".join(e.lower() for e in s if e.isalnum())
+        return s_s == s_s[::-1]
+
+```
